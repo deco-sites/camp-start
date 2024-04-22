@@ -5,14 +5,15 @@ export interface Props {
   title: string;
 }
 
-export default function PartialImageGallery({ title }: Props) {
+export default function PartialImageGallery(props: Props) {
   return (
     <div class="flex flex-row justify-center">
+      <h2 class="text-center">{props.title}</h2>
       <button
-        class="btn"
+        class="btn btn-primary"
         {...usePartialSection({ props: { title: "MUDOU!" } })}
       >
-        {title}
+        Click me!
       </button>
     </div>
   );
