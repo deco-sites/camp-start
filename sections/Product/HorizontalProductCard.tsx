@@ -1,43 +1,37 @@
-import type { Product } from "apps/commerce/types.ts";
-import { ImageWidget } from "apps/admin/widgets.ts";
+import type { ProductDetailsPage } from "apps/commerce/types.ts";
+import { formatPrice } from "../../sdk/format.ts";
+import { useOffer } from "../../sdk/useOffer.ts";
+import Image from "apps/website/components/Image.tsx";
 
 export interface Props {
-  /** @title Listagem de produtos */
-  products: Product[] | null;
+  page: ProductDetailsPage | null;
 }
 
-export default function Section({ products }: Props) {
-  if (!products || products.length === 0) {
+export default function Section({ page }: Props) {
+  if (!page) {
     return null;
   }
 
+  const { product } = page;
+  const { url, productID, name, image: images, offers } = product;
+  const id = `product-card-${productID}`;
+  const [image] = images ?? [];
+  const { listPrice, price, installments } = useOffer(offers);
+
   return (
-    <div class="w-full container py-8 flex flex-col gap-6 lg:py-10">
-      {products.map((product, index) => (
-        <div>
-          {product.name}
+    <div class="flex flex-row gap-4 items-center justify-center m-4">
+      <figure>
+        <Image src={image.url} alt={name} width={200} height={279} />
+      </figure>
+      <div class="flex flex-col gap-1 items-center text-base lg:text-lg text-base-content">
+        <h3 class="uppercase font-normal">{name}</h3>
+        <div class="">{product.description}</div>
+        <div class="">Preço: ${formatPrice(price)}</div>
+        <div class="flex flex-row gap-1">
+          <a href={url} class="btn bg-blue-400" alt={name}>Ver produto</a>
+          <button class="btn">Comprar</button>
         </div>
-      ))}
+      </div>
     </div>
   );
-  //   return (
-  //     <div class="flex flex-row sm:flex-col gap-4 items-center m-4">
-  //       {
-  //         /* <figure>
-  //         <img
-  //           width="200"
-  //           height="279"
-  //           src={myProduct.image}
-  //           alt={myProduct.name}
-  //         />
-  //       </figure>
-  //       <div class="flex flex-col gap-1 items-center">
-  //         <h3 class="text-xl">{myProduct.name}</h3>
-  //         <div class="text-sm">{myProduct.description}</div>
-  //         <div class="text-sm">Preço: ${myProduct.price}</div>
-  //         <button class="btn">{myProduct.textBtn}</button>
-  //       </div> */
-  //       }
-  //     </div>
-  //   );
 }
