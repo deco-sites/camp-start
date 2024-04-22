@@ -34,7 +34,7 @@ export function ErrorLoadingFallback() {
     <div class="flex flex-row gap-4 items-center justify-center m-4">
       <div class="skeleton" style="width: 200; height:279;"></div>
       <div class="flex flex-col gap-1 items-center text-base lg:text-lg text-base-content">
-        <h3 class="skeleton w-full h-7" />
+        <h3 class="w-full h-7">Loading...</h3>
         <div class="skeleton w-full h-4" />
 
         {/* price */}
