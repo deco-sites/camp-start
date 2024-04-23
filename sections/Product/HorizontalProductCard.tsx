@@ -118,7 +118,7 @@ export default function Section({ page, animateImage, size }: Props) {
           <a href={url} class="btn btn-primary p-2" alt={name}>
             Ver produto
           </a>
-          <button class="btn p-2 m-1">Comprar</button>
+          <button class="btn p-2">Comprar</button>
         </div>
       </div>
     </div>
