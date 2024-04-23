@@ -4,10 +4,11 @@
 
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
-import * as $$$2 from "./loaders/availableIcons.ts";
-import * as $$$3 from "./loaders/icons.ts";
+import * as $$$3 from "./loaders/availableIcons.ts";
+import * as $$$4 from "./loaders/icons.ts";
 import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
 import * as $$$1 from "./loaders/List/Sections.tsx";
+import * as $$$2 from "./loaders/Votes/postVotes.tsx";
 import * as $$$$$$0 from "./sections/Animation/Animation.tsx";
 import * as $$$$$$1 from "./sections/Cards/IconCardsCarousel.tsx";
 import * as $$$$$$2 from "./sections/Cards/IconCardsCarouselWithImage.tsx";
@@ -62,10 +63,11 @@ import * as $$$$$$50 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "loaders": {
-    "deco-sites/camp-start/loaders/availableIcons.ts": $$$2,
-    "deco-sites/camp-start/loaders/icons.ts": $$$3,
+    "deco-sites/camp-start/loaders/availableIcons.ts": $$$3,
+    "deco-sites/camp-start/loaders/icons.ts": $$$4,
     "deco-sites/camp-start/loaders/Layouts/ProductCard.tsx": $$$0,
     "deco-sites/camp-start/loaders/List/Sections.tsx": $$$1,
+    "deco-sites/camp-start/loaders/Votes/postVotes.tsx": $$$2,
   },
   "sections": {
     "deco-sites/camp-start/sections/Animation/Animation.tsx": $$$$$$0,
