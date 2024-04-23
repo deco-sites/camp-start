@@ -50,7 +50,7 @@ export default function Services({
           />
           <div class="w-full lg:w-1/2 flex-1 space-y-2 lg:space-y-4 lg:max-w-xl gap-4">
             {service.type && <p>{service.type}</p>}
-            <p class="text-base-content text-[36px] md:text-[48px] leading-[120%] font-bold">
+            <p class="text-gray-700 text-[36px] md:text-[48px] leading-[120%] font-bold italic">
               {service.label}
             </p>
             <p
