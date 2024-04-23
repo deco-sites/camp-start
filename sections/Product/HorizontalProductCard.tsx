@@ -9,8 +9,21 @@ export interface Props {
    * @title Detalhes de um produto
    */
   page: ProductDetailsPage | null;
+
   /**
-   * @title Ativar animação de zoom na imagem
+   * @title Escolha o tamanho máximo de tela
+   */
+  size?:
+    | "max-w-xl"
+    | "max-w-2xl"
+    | "max-w-3xl"
+    | "max-w-4xl"
+    | "max-w-5xl"
+    | "max-w-6xl"
+    | "max-w-7xl"
+    | "max-w-full";
+  /**
+   * @title Ativar animação de zoom in na imagem
    */
   animateImage?: boolean;
 }
@@ -57,7 +70,7 @@ export function LoadingFallback() {
   );
 }
 
-export default function Section({ page, animateImage }: Props) {
+export default function Section({ page, animateImage, size }: Props) {
   if (!page) {
     return "No page data provided";
   }
@@ -71,12 +84,14 @@ export default function Section({ page, animateImage }: Props) {
 
   return (
     <div
-      class="flex h-auto w-full flex-row items-center justify-center gap-4 p-6"
+      class={`${
+        size ? size : ""
+      } flex h-auto flex-row items-center justify-center gap-4 p-6 min-w-0 truncate`}
       id={id}
     >
-      <figure class="p-1 w-auto overflow-hidden">
+      <figure class="p-1 overflow-hidden">
         <Image
-          class={`rounded-md ${
+          class={`rounded-md relative ${
             animateImage
               ? "hover:scale-150 transition-all duration-500 ease-in-out"
               : ""
@@ -88,18 +103,22 @@ export default function Section({ page, animateImage }: Props) {
           loading={"eager"}
         />
       </figure>
-      <div class="flex flex-col gap-4 truncate overflow-hidden ...">
-        <h3 class="card-title truncate overflow-hidden ...">{name}</h3>
-        <p class="text-base text-gray-700">{product.description}</p>
+      <div class="flex flex-col gap-4 min-w-0 truncate">
+        <h3 class="card-title truncate inline-block min-w-0">{name}</h3>
+        <p class="text-base text-gray-700 truncate inline-block min-w-0">
+          {product.description}
+        </p>
         {/* price */}
         <div class="leading-none text-gray-900">
           Preço: ${formatPrice(price)}
         </div>
 
         {/* buttons */}
-        <div class="flex flex-row justify-center gap-4">
-          <a href={url} class="btn btn-primary p-0.5" alt={name}>Ver produto</a>
-          <button class="btn p-0.5">Comprar</button>
+        <div class="flex flex-row box-border justify-center space-x-4 p-3">
+          <a href={url} class="btn btn-primary p-2" alt={name}>
+            Ver produto
+          </a>
+          <button class="btn p-2 m-1">Comprar</button>
         </div>
       </div>
     </div>
