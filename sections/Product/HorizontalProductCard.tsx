@@ -5,7 +5,14 @@ import Image from "apps/website/components/Image.tsx";
 import TextWithImage from "deco-sites/camp-start/sections/Content/TextWithImage.tsx";
 
 export interface Props {
+  /**
+   * @title Detalhes de um produto
+   */
   page: ProductDetailsPage | null;
+  /**
+   * @title Ativar animação de zoom na imagem
+   */
+  animateImage?: boolean;
 }
 
 export function ErrorFallback({ error }: { error?: Error }) {
@@ -50,7 +57,7 @@ export function LoadingFallback() {
   );
 }
 
-export default function Section({ page }: Props) {
+export default function Section({ page, animateImage }: Props) {
   if (!page) {
     return "No page data provided";
   }
@@ -63,9 +70,17 @@ export default function Section({ page }: Props) {
   const { listPrice, price, installments } = useOffer(offers);
 
   return (
-    <div class="flex flex-row gap-4 items-center justify-center m-4" id={id}>
-      <figure>
+    <div
+      class="flex h-auto w-full flex-row items-center justify-center gap-4 p-6"
+      id={id}
+    >
+      <figure class="p-1 w-auto overflow-hidden">
         <Image
+          class={`rounded-md ${
+            animateImage
+              ? "hover:scale-150 transition-all duration-500 ease-in-out"
+              : ""
+          } `}
           src={image.url ? image.url : "https://via.placeholder.com/200"}
           alt={name}
           width={200}
@@ -73,18 +88,39 @@ export default function Section({ page }: Props) {
           loading={"eager"}
         />
       </figure>
-      <div class="flex flex-col gap-1 items-center text-base lg:text-lg text-base-content">
-        <h3 class="uppercase font-normal">{name}</h3>
-        <div class="">{product.description}</div>
+      <div class="flex flex-col gap-4 truncate overflow-hidden ...">
+        <h3 class="card-title truncate overflow-hidden ...">{name}</h3>
+        <p class="text-base text-gray-700">{product.description}</p>
         {/* price */}
-        <div class="">Preço: ${formatPrice(price)}</div>
+        <div class="leading-none text-gray-900">
+          Preço: ${formatPrice(price)}
+        </div>
 
         {/* buttons */}
-        <div class="flex flex-row gap-1">
-          <a href={url} class="btn bg-blue-400" alt={name}>Ver produto</a>
-          <button class="btn">Comprar</button>
+        <div class="flex flex-row justify-center gap-4">
+          <a href={url} class="btn btn-primary p-0.5" alt={name}>Ver produto</a>
+          <button class="btn p-0.5">Comprar</button>
         </div>
       </div>
     </div>
   );
+}
+
+{
+  /* <div class="">
+  <figure >
+    <image class="rounded h-52 w-52 object-cover" src="https://via.placeholder.com/200" alt="name" loading="eager" />
+  </figure>
+
+  <div class="flex flex-col gap-4 truncate">
+    <h3 class="card-title truncate ...">namenamenamenamenamenamenamenamenamenamenamename</h3>
+    <p class="truncate text-base text-gray-700">product.descriptionproduct.descriptionproduct.descriptionproduct.descriptionproduct.description</p>
+
+    <div class="leading-none text-gray-900">Preço: $22.90</div>
+    <div class="flex flex-row justify-center gap-4">
+      <a class="btn btn-primary w-fit">Ver produto</a>
+      <button class="btn w-fit">Comprar</button>
+    </div>
+  </div>
+</div> */
 }
