@@ -32,11 +32,11 @@ export default function Services({
   ],
 }: Props) {
   return (
-    <div class="bg-base-100 flex flex-col py-28">
+    <div class="bg-base-100 flex flex-col py-4">
       {services?.map((service, index) => (
         <div
           key={index}
-          class={`flex xl:container xl:mx-auto first:pt-0 py-12 lg:py-28 mx-5 md:mx-10 ${
+          class={`flex xl:container xl:mx-auto first:pt-0 py-12 lg:py-12 mx-5 md:mx-10 ${
             PLACEMENT[service.placement]
           } gap-12 md:gap-20 text-left items-center justify-evenly`}
         >
@@ -50,7 +50,7 @@ export default function Services({
           />
           <div class="w-full lg:w-1/2 flex-1 space-y-2 lg:space-y-4 lg:max-w-xl gap-4">
             {service.type && <p>{service.type}</p>}
-            <p class="text-base-content text-[36px] md:text-[48px] leading-[120%] font-bold">
+            <p class="text-gray-700 text-[36px] md:text-[48px] leading-[120%] font-bold italic">
               {service.label}
             </p>
             <p
