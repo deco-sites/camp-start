@@ -20,6 +20,10 @@ import * as $Header_Drawers from "./islands/Header/Drawers.tsx";
 import * as $Header_Searchbar from "./islands/Header/Searchbar.tsx";
 import * as $Newsletter from "./islands/Newsletter.tsx";
 import * as $OutOfStock from "./islands/OutOfStock.tsx";
+import * as $PracticesDecoCamp_Computed from "./islands/PracticesDecoCamp/Computed.tsx";
+import * as $PracticesDecoCamp_Counter_Signal from "./islands/PracticesDecoCamp/Counter_Signal.tsx";
+import * as $PracticesDecoCamp_Counter_State from "./islands/PracticesDecoCamp/Counter_State.tsx";
+import * as $PracticesDecoCamp_IslandExample from "./islands/PracticesDecoCamp/IslandExample.tsx";
 import * as $ProductImageZoom from "./islands/ProductImageZoom.tsx";
 import * as $SearchControls from "./islands/SearchControls.tsx";
 import * as $ShippingSimulation from "./islands/ShippingSimulation.tsx";
@@ -51,6 +55,13 @@ const manifest = {
     "./islands/Header/Searchbar.tsx": $Header_Searchbar,
     "./islands/Newsletter.tsx": $Newsletter,
     "./islands/OutOfStock.tsx": $OutOfStock,
+    "./islands/PracticesDecoCamp/Computed.tsx": $PracticesDecoCamp_Computed,
+    "./islands/PracticesDecoCamp/Counter_Signal.tsx":
+      $PracticesDecoCamp_Counter_Signal,
+    "./islands/PracticesDecoCamp/Counter_State.tsx":
+      $PracticesDecoCamp_Counter_State,
+    "./islands/PracticesDecoCamp/IslandExample.tsx":
+      $PracticesDecoCamp_IslandExample,
     "./islands/ProductImageZoom.tsx": $ProductImageZoom,
     "./islands/SearchControls.tsx": $SearchControls,
     "./islands/ShippingSimulation.tsx": $ShippingSimulation,
