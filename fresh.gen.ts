@@ -24,7 +24,9 @@ import * as $PracticesDecoCamp_Computed from "./islands/PracticesDecoCamp/Comput
 import * as $PracticesDecoCamp_Counter_Signal from "./islands/PracticesDecoCamp/Counter_Signal.tsx";
 import * as $PracticesDecoCamp_Counter_State from "./islands/PracticesDecoCamp/Counter_State.tsx";
 import * as $PracticesDecoCamp_Display from "./islands/PracticesDecoCamp/Display.tsx";
+import * as $PracticesDecoCamp_Grouped from "./islands/PracticesDecoCamp/Grouped.tsx";
 import * as $PracticesDecoCamp_IslandExample from "./islands/PracticesDecoCamp/IslandExample.tsx";
+import * as $PracticesDecoCamp_Nested from "./islands/PracticesDecoCamp/Nested.tsx";
 import * as $ProductImageZoom from "./islands/ProductImageZoom.tsx";
 import * as $SearchControls from "./islands/SearchControls.tsx";
 import * as $ShippingSimulation from "./islands/ShippingSimulation.tsx";
@@ -62,8 +64,10 @@ const manifest = {
     "./islands/PracticesDecoCamp/Counter_State.tsx":
       $PracticesDecoCamp_Counter_State,
     "./islands/PracticesDecoCamp/Display.tsx": $PracticesDecoCamp_Display,
+    "./islands/PracticesDecoCamp/Grouped.tsx": $PracticesDecoCamp_Grouped,
     "./islands/PracticesDecoCamp/IslandExample.tsx":
       $PracticesDecoCamp_IslandExample,
+    "./islands/PracticesDecoCamp/Nested.tsx": $PracticesDecoCamp_Nested,
     "./islands/ProductImageZoom.tsx": $ProductImageZoom,
     "./islands/SearchControls.tsx": $SearchControls,
     "./islands/ShippingSimulation.tsx": $ShippingSimulation,

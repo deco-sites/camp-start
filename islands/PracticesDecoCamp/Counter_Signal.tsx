@@ -1,6 +1,8 @@
 import { effect, signal, useSignal, useSignalEffect } from "@preact/signals";
 import { userCount } from "deco-sites/camp-start/sdk/PracticesDecoCamp/userCount.tsx";
 
+// referência https://preactjs.com/guide/v10/signals#introduction
+
 const outSideCount = signal(0);
 
 //* função usada no lado de fora do componente
