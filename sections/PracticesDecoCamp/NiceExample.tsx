@@ -1,6 +1,17 @@
 import { AppContext } from "deco-sites/camp-start/apps/site.ts";
 import { SectionProps } from "deco/mod.ts";
 
+//^ Função para embaralhar um array de elementos.
+function shuffleArray<T>(array: T[]): T[] {
+  const newArray = [...array]; //* create a copy of the array to avoid mutating the original.
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const N1 = Math.floor(Math.random() * (i + 1)); //* Generate a random index between 0 and i.
+    //* Swap the elements at the index i and N1 indexes.
+    [newArray[i], newArray[N1]] = [newArray[N1], newArray[i]];
+  }
+  return newArray;
+}
+
 export interface Country {
   name: string;
   media: {
@@ -11,6 +22,7 @@ export interface Country {
 
 export interface Props {
   title: string;
+  // limit?: number;
 }
 
 //^ módulo de section sem loader.
@@ -21,11 +33,25 @@ export interface Props {
 
 // inlined loader
 export const loader = async (props: Props, req: Request, _ctx: AppContext) => {
+  //? Pega o parâmetro limit da query string da URL.
+  const url = new URL(req.url);
+
+  const limitString = url.searchParams.get("limit") ?? "9";
+  const limit = Number(limitString);
+
+  //? Pega o parâmetro limit da prop.
+  // const limit = props.limit ?? 9;
+
+  //? Busca os países da API.
   const countriesResponse = await fetch(
     "https://api.sampleapis.com/countries/countries",
   );
-  const countries = await countriesResponse.json() as Country[];
-  // console.log(countries);
+  let allCountries = await countriesResponse.json() as Country[];
+
+  //? Embaralha os países.
+  allCountries = shuffleArray(allCountries);
+
+  const countries = allCountries.slice(0, limit);
 
   return {
     ...props,
