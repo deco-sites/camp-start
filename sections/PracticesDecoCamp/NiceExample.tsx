@@ -1,5 +1,6 @@
 import { AppContext } from "deco-sites/camp-start/apps/site.ts";
 import { SectionProps } from "deco/mod.ts";
+import { Secret } from "apps/website/loaders/secret.ts";
 
 //^ Função para embaralhar um array de elementos.
 function shuffleArray<T>(array: T[]): T[] {
@@ -23,6 +24,7 @@ export interface Country {
 export interface Props {
   title: string;
   // limit?: number;
+  // secret: Secret;
 }
 
 //^ módulo de section sem loader.
@@ -32,15 +34,22 @@ export interface Props {
 // props são passadas para o loader, que retorna um objeto com as props que serão passadas para o componente. props -> loader inline -> section.
 
 // inlined loader
-export const loader = async (props: Props, req: Request, _ctx: AppContext) => {
-  //? Pega o parâmetro limit da query string da URL.
-  const url = new URL(req.url);
-
-  const limitString = url.searchParams.get("limit") ?? "9";
-  const limit = Number(limitString);
-
+export const loader = async (props: Props, req: Request, ctx: AppContext) => {
   //? Pega o parâmetro limit da prop.
   // const limit = props.limit ?? 9;
+
+  //? Pega o parâmetro limit da query string da URL.
+  // const url = new URL(req.url);
+
+  // const limitString = url.searchParams.get("limit") ?? "9";
+  // const limit = Number(limitString);
+
+  //? Pega o parâmetro limit do contexto.
+  const limit = ctx.limit?.limitNumber ?? 9;
+
+  // const secretValue = props?.secret?.get() ?? "9";
+  // // Use o secret aqui
+  // const limit = Number(secretValue);
 
   //? Busca os países da API.
   const countriesResponse = await fetch(
