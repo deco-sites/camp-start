@@ -2,6 +2,7 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $$$$$$$$$0 from "./actions/sendpost.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 import * as $$$4 from "./loaders/availableIcons.ts";
@@ -138,6 +139,9 @@ const manifest = {
     "deco-sites/camp-start/sections/Social/InstagramPosts.tsx": $$$$$$52,
     "deco-sites/camp-start/sections/Social/WhatsApp.tsx": $$$$$$53,
     "deco-sites/camp-start/sections/Theme/Theme.tsx": $$$$$$54,
+  },
+  "actions": {
+    "deco-sites/camp-start/actions/sendpost.ts": $$$$$$$$$0,
   },
   "apps": {
     "deco-sites/camp-start/apps/decohub.ts": $$$$$$$$$$$0,
