@@ -1,6 +1,6 @@
 import { AppContext } from "deco-sites/camp-start/apps/site.ts";
 import { SectionProps } from "deco/mod.ts";
-import { Secret } from "apps/website/loaders/secret.ts";
+// import { Secret } from "apps/website/loaders/secret.ts";
 
 //^ Função para embaralhar um array de elementos.
 function shuffleArray<T>(array: T[]): T[] {
