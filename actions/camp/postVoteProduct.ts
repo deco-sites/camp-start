@@ -1,5 +1,4 @@
 import { AppContext } from "deco-sites/camp-start/apps/site.ts";
-import { redirect } from "deco/mod.ts";
 
 export interface ProductRecord {
   total: number;
@@ -13,9 +12,9 @@ export interface Props {
 //* loader in block
 const loader = async (
   props: Props,
-  req: Request,
-  ctx: AppContext,
-): Promise<ProductRecord | null> => {
+  _req: unknown,
+  _ctx: AppContext,
+): Promise<ProductRecord | { status: "Failure" }> => {
   //? Registra um voto na API.
 
   const apiResponse = await fetch(
@@ -33,20 +32,12 @@ const loader = async (
   );
 
   //? caso de erro
-  const url = new URL(req.url);
-  if (!apiResponse.ok) {
-    ctx.response.headers.append("Record-Votes", "Failure");
-    ctx.response.status = 404;
-    // redirecionamenro de página
-    redirect(new URL("/quem-somos", url));
-    return null;
+  if (apiResponse.ok) {
+    const votes = await apiResponse.json() as ProductRecord;
+    return votes;
   }
 
-  const votes = await apiResponse.json() as ProductRecord;
-
-  // console.log("=====>", votes);
-
-  return votes;
+  return { status: "Failure" };
 };
 
 export default loader;
