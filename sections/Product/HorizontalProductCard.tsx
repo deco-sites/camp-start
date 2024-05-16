@@ -3,6 +3,7 @@ import { formatPrice } from "../../sdk/format.ts";
 import { useOffer } from "../../sdk/useOffer.ts";
 import Image from "apps/website/components/Image.tsx";
 import TextWithImage from "deco-sites/camp-start/sections/Content/TextWithImage.tsx";
+import BtnEmojiCheck from "deco-sites/camp-start/islands/Camp/BtnEmojiCheck.tsx";
 
 export interface Props {
   /**
@@ -109,10 +110,22 @@ export default function Section({ page, animateImage, size }: Props) {
           {product.description}
         </p>
         {/* price */}
-        <div class="leading-none text-gray-900">
-          Preço: ${formatPrice(price)}
+        <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-0 lg:flex-row lg:gap-2  justify-start">
+            <div class="line-through text-xs font-light lg:text-sm">
+              {`De: ${formatPrice(listPrice, offers?.priceCurrency)}`}
+            </div>
+            <div class="text-base-content lg:text-sm font-light">
+              {`Para: ${formatPrice(price, offers?.priceCurrency)}`}
+            </div>
+          </div>
         </div>
+        <span class="text-base-300 font-light text-sm truncate">
+          ou {installments}
+        </span>
 
+        {/* emoji check */}
+        <BtnEmojiCheck productID={productID} />
         {/* buttons */}
         <div class="flex flex-row box-border justify-center space-x-4 p-3">
           <a href={url} class="btn btn-primary p-2" alt={name}>
