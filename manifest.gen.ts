@@ -5,7 +5,10 @@
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 import * as $$$2 from "./loaders/availableIcons.ts";
-import * as $$$3 from "./loaders/icons.ts";
+import * as $$$3 from "./loaders/camp/getProductVotes.ts";
+import * as $$$4 from "./loaders/camp/getTotalVotes.ts";
+import * as $$$5 from "./loaders/camp/postVoteProduct.ts";
+import * as $$$6 from "./loaders/icons.ts";
 import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
 import * as $$$1 from "./loaders/List/Sections.tsx";
 import * as $$$$$$0 from "./sections/Animation/Animation.tsx";
@@ -63,7 +66,10 @@ import * as $$$$$$50 from "./sections/Theme/Theme.tsx";
 const manifest = {
   "loaders": {
     "deco-sites/camp-start/loaders/availableIcons.ts": $$$2,
-    "deco-sites/camp-start/loaders/icons.ts": $$$3,
+    "deco-sites/camp-start/loaders/camp/getProductVotes.ts": $$$3,
+    "deco-sites/camp-start/loaders/camp/getTotalVotes.ts": $$$4,
+    "deco-sites/camp-start/loaders/camp/postVoteProduct.ts": $$$5,
+    "deco-sites/camp-start/loaders/icons.ts": $$$6,
     "deco-sites/camp-start/loaders/Layouts/ProductCard.tsx": $$$0,
     "deco-sites/camp-start/loaders/List/Sections.tsx": $$$1,
   },
