@@ -37,7 +37,7 @@ const loader = async (
   }
   const votes = await apiResponse.json() as ProductTotalVotes;
 
-  // console.log("=====>", votes);
+  // console.log("get productVotes =====>", votes);
 
   return votes;
 };

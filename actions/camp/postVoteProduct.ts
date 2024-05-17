@@ -6,7 +6,7 @@ export interface ProductRecord {
 }
 
 export interface Props {
-  productID: string;
+  productId: string;
 }
 
 //* loader in block
@@ -26,14 +26,14 @@ const loader = async (
         "accept": "application/json",
       }),
       body: JSON.stringify({
-        productId: props.productID,
+        productId: props.productId,
       }),
     },
   );
 
   if (apiResponse.ok) {
     const votes = await apiResponse.json() as ProductRecord;
-    // console.log("=====>", apiResponse);
+    // console.log("post product vote =>", apiResponse);
 
     return votes;
   }

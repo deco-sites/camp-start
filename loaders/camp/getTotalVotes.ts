@@ -30,7 +30,7 @@ const loader = async (
   }
   const votes = await apiResponse.json() as TotalVotes;
 
-  console.log("total ===>", votes);
+  // console.log("get totalVotes ===>", votes);
 
   return votes;
 };
