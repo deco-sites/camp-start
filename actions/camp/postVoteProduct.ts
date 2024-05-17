@@ -6,7 +6,7 @@ export interface ProductRecord {
 }
 
 export interface Props {
-  productID: number;
+  productID: string;
 }
 
 //* loader in block
@@ -16,27 +16,29 @@ const loader = async (
   _ctx: AppContext,
 ): Promise<ProductRecord | { status: "Failure" }> => {
   //? Registra um voto na API.
-
   const apiResponse = await fetch(
-    `https://camp-api.deco.cx/events`,
+    "https://camp-api.deco.cx/event/",
     {
       method: "POST",
-      headers: {
+      headers: new Headers({
         "x-api-key": "camp-start",
-        "Content-type": "application/json; charset=UTF-8",
-      },
+        "content-type": "application/json",
+        "accept": "application/json",
+      }),
       body: JSON.stringify({
-        product: props.productID,
+        productId: props.productID,
       }),
     },
   );
 
-  //? caso de erro
   if (apiResponse.ok) {
     const votes = await apiResponse.json() as ProductRecord;
+    // console.log("=====>", apiResponse);
+
     return votes;
   }
 
+  //? caso de erro
   return { status: "Failure" };
 };
 

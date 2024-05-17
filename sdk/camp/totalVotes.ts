@@ -2,7 +2,7 @@ import { signal } from "@preact/signals";
 
 export const totalVotes = signal<number>(0);
 
-const updateVotes = () => {
-};
+// const updateVotes = () => {
+// };
 
-setInterval(updateVotes, 30000);
+// setInterval(updateVotes, 30000);

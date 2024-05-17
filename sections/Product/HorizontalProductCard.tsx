@@ -137,22 +137,3 @@ export default function Section({ page, animateImage, size }: Props) {
     </div>
   );
 }
-
-{
-  /* <div class="">
-  <figure >
-    <image class="rounded h-52 w-52 object-cover" src="https://via.placeholder.com/200" alt="name" loading="eager" />
-  </figure>
-
-  <div class="flex flex-col gap-4 truncate">
-    <h3 class="card-title truncate ...">namenamenamenamenamenamenamenamenamenamenamename</h3>
-    <p class="truncate text-base text-gray-700">product.descriptionproduct.descriptionproduct.descriptionproduct.descriptionproduct.description</p>
-
-    <div class="leading-none text-gray-900">Preço: $22.90</div>
-    <div class="flex flex-row justify-center gap-4">
-      <a class="btn btn-primary w-fit">Ver produto</a>
-      <button class="btn w-fit">Comprar</button>
-    </div>
-  </div>
-</div> */
-}
