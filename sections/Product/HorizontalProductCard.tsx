@@ -87,10 +87,10 @@ export default function Section({ page, animateImage, size }: Props) {
     <div
       class={`${
         size ? size : ""
-      } flex h-auto flex-row items-center justify-center gap-4 p-6 min-w-0 truncate`}
+      } flex h-auto flex-col sm:flex-row items-center justify-center gap-4 p-6`}
       id={id}
     >
-      <figure class="p-1 overflow-hidden">
+      <figure class="p-1">
         <Image
           class={`rounded-md relative ${
             animateImage
@@ -104,11 +104,16 @@ export default function Section({ page, animateImage, size }: Props) {
           loading={"eager"}
         />
       </figure>
-      <div class="flex flex-col gap-4 min-w-0 truncate">
-        <h3 class="card-title truncate inline-block min-w-0">{name}</h3>
-        <p class="text-base text-gray-700 truncate inline-block min-w-0">
+      <div class="flex flex-col flex-wrap items-center gap-4">
+        <h3 class="card-title">{name}</h3>
+        <p class="text-base text-gray-700">
           {product.description}
         </p>
+        {/* emoji check */}
+        <BtnEmojiCheck productID={productID} />
+      </div>
+
+      <div class="flex flex-col gap-1">
         {/* price */}
         <div class="flex flex-col gap-2">
           <div class="flex flex-col gap-0 lg:flex-row lg:gap-2  justify-start">
@@ -120,14 +125,12 @@ export default function Section({ page, animateImage, size }: Props) {
             </div>
           </div>
         </div>
-        <span class="text-base-300 font-light text-sm truncate">
+        <span class="text-base-300 font-light text-sm">
           ou {installments}
         </span>
 
-        {/* emoji check */}
-        <BtnEmojiCheck productID={productID} />
         {/* buttons */}
-        <div class="flex flex-row box-border justify-center space-x-4 p-3">
+        <div class="flex flex-col gap-2 box-border justify-center space-x-4 p-3">
           <a href={url} class="btn btn-primary p-2" alt={name}>
             Ver produto
           </a>
