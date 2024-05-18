@@ -63,10 +63,10 @@ function Newsletter(
           class="form-control"
           onSubmit={handleSubmit}
         >
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-col md:flex-row flex-wrap gap-3">
             <input
               name="email"
-              class="flex-auto md:flex-none input input-bordered md:w-80 text-base-content"
+              class="flex-auto md:flex-none w-60 input input-bordered md:w-56 text-base-content"
               placeholder={content?.form?.placeholder || "Digite seu email"}
             />
             <button
