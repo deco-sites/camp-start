@@ -1,7 +1,7 @@
 import { AppContext } from "deco-sites/camp-start/apps/site.ts";
 
 export interface Props {
-  productId: number;
+  productId: string;
 }
 
 export interface ProductTotalVotes {

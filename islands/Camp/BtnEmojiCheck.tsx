@@ -1,5 +1,5 @@
 import Icon from "deco-sites/camp-start/components/ui/Icon.tsx";
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { effect, useSignal, useSignalEffect } from "@preact/signals";
 import { totalVotes } from "deco-sites/camp-start/sdk/camp/totalVotes.ts";
 import { invoke } from "deco-sites/camp-start/runtime.ts";
 
@@ -25,10 +25,10 @@ export default function BtnEmojiCheck({ productID }: Props) {
 
     //? usado para atualizar o total de votos no site.
     totalVotes.value = totalVotes.value + 1;
-    // console.log(
-    //   "increment totalVotesInProduct ===>",
-    //   totalVotesInProduct.value,
-    // );
+    console.log(
+      "increment totalVotesInProduct ===>",
+      totalVotesInProduct.value,
+    );
 
     //^ atualiza o ícone do botão.
     isChecked.value = true;
@@ -37,25 +37,38 @@ export default function BtnEmojiCheck({ productID }: Props) {
 
   const decrement = () => {
     if (totalVotes.value >= 1 && totalVotesInProduct.value >= 1) {
-      totalVotes.value = totalVotes.value - 1;
-      totalVotesInProduct.value = totalVotesInProduct.value - 1;
+      // totalVotes.value = totalVotes.value - 1;
+      // totalVotesInProduct.value = totalVotesInProduct.value - 1;
+
+      //^ atualiza o ícone do botão.
+      isChecked.value = false;
+      typeIcon.value = "moodSmile";
+
+      console.log(
+        "decrement totalVotesInProduct ===>",
+        totalVotesInProduct.value,
+      );
     }
-
-    // console.log(
-    //   "decrement totalVotesInProduct ===>",
-    //   totalVotesInProduct.value,
-    // );
-
-    //^ atualiza o ícone do botão.
-    isChecked.value = false;
-    typeIcon.value = "moodSmile";
   };
 
   useSignalEffect(() => {
-    isChecked.value,
-      typeIcon.value,
-      totalVotes.value,
-      totalVotesInProduct.value;
+    isChecked.value, typeIcon.value, totalVotesInProduct.value;
+    const updateVotes = async () => {
+      const votesInProduct = await invoke["deco-sites/camp-start"].loaders.camp
+        .getProductVotes({
+          productId: productID,
+        }) as { product: string };
+
+      console.log("votesInProduct ===>", Number(votesInProduct.product));
+
+      totalVotesInProduct.value = Number(votesInProduct.product);
+    };
+
+    updateVotes();
+  });
+
+  effect(() => {
+    totalVotes.value;
   });
 
   return (
