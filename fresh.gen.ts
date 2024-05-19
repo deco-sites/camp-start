@@ -10,6 +10,7 @@ import * as $AddToCartButton_vnda from "./islands/AddToCartButton/vnda.tsx";
 import * as $AddToCartButton_vtex from "./islands/AddToCartButton/vtex.tsx";
 import * as $AddToCartButton_wake from "./islands/AddToCartButton/wake.tsx";
 import * as $Camp_BtnEmojiCheck from "./islands/Camp/BtnEmojiCheck.tsx";
+import * as $Camp_CartIsland from "./islands/Camp/CartIsland.tsx";
 import * as $Camp_TotalVotes from "./islands/Camp/TotalVotes.tsx";
 import * as $Header_Buttons from "./islands/Header/Buttons.tsx";
 import * as $Header_Cart_linx from "./islands/Header/Cart/linx.tsx";
@@ -43,6 +44,7 @@ const manifest = {
     "./islands/AddToCartButton/vtex.tsx": $AddToCartButton_vtex,
     "./islands/AddToCartButton/wake.tsx": $AddToCartButton_wake,
     "./islands/Camp/BtnEmojiCheck.tsx": $Camp_BtnEmojiCheck,
+    "./islands/Camp/CartIsland.tsx": $Camp_CartIsland,
     "./islands/Camp/TotalVotes.tsx": $Camp_TotalVotes,
     "./islands/Header/Buttons.tsx": $Header_Buttons,
     "./islands/Header/Cart/linx.tsx": $Header_Cart_linx,
