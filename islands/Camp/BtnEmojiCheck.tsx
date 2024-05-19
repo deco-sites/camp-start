@@ -2,6 +2,7 @@ import Icon from "deco-sites/camp-start/components/ui/Icon.tsx";
 import { effect, useSignal, useSignalEffect } from "@preact/signals";
 import { totalVotes } from "deco-sites/camp-start/sdk/camp/totalVotes.ts";
 import { invoke } from "deco-sites/camp-start/runtime.ts";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export interface Props {
   productID: string;
@@ -25,14 +26,17 @@ export default function BtnEmojiCheck({ productID }: Props) {
 
     //? usado para atualizar o total de votos no site.
     totalVotes.value = totalVotes.value + 1;
-    console.log(
-      "increment totalVotesInProduct ===>",
-      totalVotesInProduct.value,
-    );
+    // console.log(
+    //   "increment totalVotesInProduct ===>",
+    //   totalVotesInProduct.value,
+    // );
 
     //^ atualiza o ícone do botão.
     isChecked.value = true;
     typeIcon.value = "moodCheck";
+
+    //^ notifica o usuário.
+    notify("Agradeço o voto! Voto computado.");
   };
 
   const decrement = () => {
@@ -43,6 +47,9 @@ export default function BtnEmojiCheck({ productID }: Props) {
       //^ atualiza o ícone do botão.
       isChecked.value = false;
       typeIcon.value = "moodSmile";
+
+      //^ notifica o usuário.
+      // notify("Voto removido!");
 
       console.log(
         "decrement totalVotesInProduct ===>",
@@ -71,6 +78,8 @@ export default function BtnEmojiCheck({ productID }: Props) {
     totalVotes.value;
   });
 
+  const notify = (message: string) => toast.success(message);
+
   return (
     <div class="p-4 border flex flex-row gap-4">
       <h4>totalVotes: {totalVotesInProduct.value}</h4>
@@ -83,6 +92,19 @@ export default function BtnEmojiCheck({ productID }: Props) {
           id={`${typeIcon.value}`}
           strokeWidth={3}
           class="rounded-full"
+        />
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
         />
       </button>
     </div>
