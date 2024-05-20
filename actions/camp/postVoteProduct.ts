@@ -15,7 +15,7 @@ const loader = async (
   _req: unknown,
   _ctx: AppContext,
 ): Promise<ProductRecord | { status: "Failure" }> => {
-  //? Registra um voto na API.
+  //? Registra um voto de produto na API.
   const apiResponse = await fetch(
     "https://camp-api.deco.cx/event/",
     {

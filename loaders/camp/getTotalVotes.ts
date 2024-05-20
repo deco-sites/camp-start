@@ -11,7 +11,6 @@ const loader = async (
   ctx: AppContext,
 ): Promise<TotalVotes | { status: "Failure" }> => {
   //? Busca o total de votos da API.
-
   const apiResponse = await fetch(
     "https://camp-api.deco.cx/events",
     {
