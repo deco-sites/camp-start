@@ -40,13 +40,13 @@ export default function Section(
   let productInUse;
 
   if (localOfExhibition === "products") {
-    console.log("products =>", true);
+    // console.log("products =>", true);
     if (!products) {
       return "No product data provided";
     }
     productInUse = products[0];
   } else {
-    console.log("page =>", true);
+    // console.log("page =>", true);
 
     if (!page) {
       return "No page data provided";

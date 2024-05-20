@@ -3,6 +3,7 @@ import { effect, useSignal, useSignalEffect } from "@preact/signals";
 import { totalVotes } from "deco-sites/camp-start/sdk/camp/totalVotes.ts";
 import { invoke } from "deco-sites/camp-start/runtime.ts";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { sendEvent } from "../../sdk/analytics.tsx";
 
 export interface Props {
   productID: string;
@@ -20,41 +21,34 @@ export default function BtnEmojiCheck({ productID }: Props) {
         productId: productID,
       }) as { product: number; total: number };
 
-    // console.log("votesInProduct ===>", votesInProduct.product);
-
     totalVotesInProduct.value = votesInProduct.product;
 
     //? usado para atualizar o total de votos no site.
     totalVotes.value = totalVotes.value + 1;
-    // console.log(
-    //   "increment totalVotesInProduct ===>",
-    //   totalVotesInProduct.value,
-    // );
 
     //^ atualiza o ícone do botão.
     isChecked.value = true;
     typeIcon.value = "moodCheck";
 
+    sendEvent({
+      name: "post_score",
+      params: {
+        character: productID,
+        score: totalVotesInProduct.value,
+      },
+    });
     //^ notifica o usuário.
     notify("Agradeço o voto! Voto computado.");
   };
 
   const decrement = () => {
     if (totalVotes.value >= 1 && totalVotesInProduct.value >= 1) {
-      // totalVotes.value = totalVotes.value - 1;
-      // totalVotesInProduct.value = totalVotesInProduct.value - 1;
-
       //^ atualiza o ícone do botão.
       isChecked.value = false;
       typeIcon.value = "moodSmile";
 
       //^ notifica o usuário.
       // notify("Voto removido!");
-
-      console.log(
-        "decrement totalVotesInProduct ===>",
-        totalVotesInProduct.value,
-      );
     }
   };
 
@@ -66,7 +60,7 @@ export default function BtnEmojiCheck({ productID }: Props) {
           productId: productID,
         }) as { product: string };
 
-      console.log("votesInProduct ===>", Number(votesInProduct.product));
+      // console.log("votesInProduct ===>", Number(votesInProduct.product));
 
       totalVotesInProduct.value = Number(votesInProduct.product);
     };
