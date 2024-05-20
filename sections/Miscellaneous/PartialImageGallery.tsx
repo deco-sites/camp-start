@@ -33,7 +33,7 @@ export default function PartialImageGallery(
   return (
     <div class="flex flex-col justify-center items-center">
       <h2 class="text-xl font-bold text-center p-3 m-3">{title}</h2>
-      <div class="flex flex-row justify-center gap-4">
+      <div class="flex flex-row flex-wrap justify-center gap-4">
         {images.slice(initialOfImgs, limitOfImgs).map((
           { image, titleImage, alt },
         ) => (
@@ -57,7 +57,7 @@ export default function PartialImageGallery(
       </div>
       {images.length > limitOfImgs && (
         <button
-          className="btn btn-primary w-fit justify-center"
+          className="btn btn-primary w-fit justify-center mb-2"
           {...usePartialSection({
             mode: "replace",
             props: {
@@ -72,7 +72,7 @@ export default function PartialImageGallery(
 
       {images.length === limitOfImgs && (
         <button
-          className="btn"
+          className="btn mb-2"
           {...usePartialSection({
             mode: "replace",
             props: {

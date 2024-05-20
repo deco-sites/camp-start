@@ -8,6 +8,8 @@ import type { SectionProps } from "deco/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
+import { totalVotes } from "deco-sites/camp-start/sdk/camp/totalVotes.ts";
+import TotalVotes from "deco-sites/camp-start/islands/Camp/TotalVotes.tsx";
 
 export interface Logo {
   src: ImageWidget;
@@ -99,6 +101,7 @@ function Header({
               logoPosition={logoPosition}
               buttons={buttons}
             />
+            <TotalVotes />
           </div>
         </Drawers>
       </header>
