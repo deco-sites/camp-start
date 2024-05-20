@@ -14,9 +14,7 @@ const loader = async (
   _req: unknown,
   ctx: AppContext,
 ): Promise<ProductTotalVotes | { status: "Failure" }> => {
-  //? Busca o totals de votos de um produto da API.
-  // const productId = url.searchParams.get("id");
-
+  //? Busca o total de votos de um produto da API.
   const { productId } = props;
 
   const apiResponse = await fetch(
