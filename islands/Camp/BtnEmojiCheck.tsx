@@ -76,7 +76,7 @@ export default function BtnEmojiCheck({ productID }: Props) {
 
   return (
     <div class="p-4 border flex flex-row gap-4">
-      <h4>totalVotes: {totalVotesInProduct.value}</h4>
+      <h4>Votos: {totalVotesInProduct.value}</h4>
       <button
         class="btn bg-transparent"
         onClick={isChecked.value ? decrement : increment}
