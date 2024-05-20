@@ -89,7 +89,7 @@ export default function BtnEmojiCheck({ productID }: Props) {
         />
       </button>
       <ToastContainer
-        position="top-center"
+        position="top-right"
         autoClose={3000}
         hideProgressBar={true}
         newestOnTop={false}
