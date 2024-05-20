@@ -8,10 +8,12 @@ import Image from "apps/website/components/Image.tsx";
 import BtnEmojiCheck from "deco-sites/camp-start/islands/Camp/BtnEmojiCheck.tsx";
 
 export interface Props {
+  /** @title Produto com dados vindo da página */
   page?: ProductDetailsPage | null;
-  details?: ProductDetailsPage | null;
-
+  /** @title Produto com dados vindo de produtos relacionados*/
   products?: Product[] | null;
+
+  /** @title Local de exibição do produto */
   localOfExhibition: "page" | "products";
 
   /**
